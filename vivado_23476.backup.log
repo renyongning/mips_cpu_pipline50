@@ -1,0 +1,222 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Tue Jan  7 00:02:00 2025
+# Process ID: 23476
+# Current directory: E:/learn/cpuhomework/Pipeline50/pipline50
+# Command line: vivado.exe -mode batch -source run.tcl
+# Log file: E:/learn/cpuhomework/Pipeline50/pipline50/vivado.log
+# Journal file: E:/learn/cpuhomework/Pipeline50/pipline50\vivado.jou
+#-----------------------------------------------------------
+source run.tcl
+# open_project "E:\\learn\\cpuhomework\\Pipeline50\\pipline50\\pipline50.xpr"
+Scanning sources...
+Finished scanning sources
+# launch_simulation -simset sim_1
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'mips_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj mips_tb_vlog.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/download/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 609e2870074c42a0a557dd56411259b7 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot mips_tb_behav xil_defaultlib.mips_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-3091] actual bit length 5 differs from formal bit length 32 for port 'in1' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:117]
+WARNING: [VRFC 10-3091] actual bit length 5 differs from formal bit length 32 for port 'in1' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:119]
+WARNING: [VRFC 10-3091] actual bit length 6 differs from formal bit length 5 for port 'rd1' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:121]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'reset' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:151]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'reset' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:158]
+WARNING: [VRFC 10-3091] actual bit length 5 differs from formal bit length 32 for port 'in1' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:120]
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "mips_tb_behav -key {Behavioral:sim_1:Functional:mips_tb} -tclbatch {mips_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source mips_tb.tcl
+## current_wave_config
+WARNING: Too many words specified in data file E:/learn/cpuhomework/finallab/Pipeline50/pipeline-tester-py/code.txt
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'mips_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 339.441 ; gain = 17.887
+# run all
+@00003000: $29 <= 00001000
+@00003008: $ 0 <= 00000000
+@000030c4: $29 <= 00000fe8
+@000030c8: *00000ffc <= 00000000
+@000030cc: *00000ff8 <= 00000000
+@000030d0: $30 <= 00000fe8
+@000030d4: $ 4 <= 00001055
+@000030d8: $31 <= 000030e0
+@000030dc: $ 5 <= 00000a18
+@0000306c: $29 <= 00000fe0
+@00003070: *00000fe4 <= 000030e0
+@00003074: *00000fe0 <= 00000fe8
+@00003078: $30 <= 00000fe0
+@0000307c: $ 2 <= 00000a18
+@00003080: $ 5 <= 00001055
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000a18
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000a18
+@000030a8: $ 5 <= 0000063d
+@0000307c: $ 2 <= 0000063d
+@00003080: $ 5 <= 00000a18
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 0000063d
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 0000063d
+@000030a8: $ 5 <= 000003db
+@0000307c: $ 2 <= 000003db
+@00003080: $ 5 <= 0000063d
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 000003db
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 000003db
+@000030a8: $ 5 <= 00000262
+@0000307c: $ 2 <= 00000262
+@00003080: $ 5 <= 000003db
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000262
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000262
+@000030a8: $ 5 <= 00000179
+@0000307c: $ 2 <= 00000179
+@00003080: $ 5 <= 00000262
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000179
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000179
+@000030a8: $ 5 <= 000000e9
+@0000307c: $ 2 <= 000000e9
+@00003080: $ 5 <= 00000179
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 000000e9
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 000000e9
+@000030a8: $ 5 <= 00000090
+@0000307c: $ 2 <= 00000090
+@00003080: $ 5 <= 000000e9
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000090
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000090
+@000030a8: $ 5 <= 00000059
+@0000307c: $ 2 <= 00000059
+@00003080: $ 5 <= 00000090
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000059
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000059
+@000030a8: $ 5 <= 00000037
+@0000307c: $ 2 <= 00000037
+@00003080: $ 5 <= 00000059
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000037
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000037
+@000030a8: $ 5 <= 00000022
+@0000307c: $ 2 <= 00000022
+@00003080: $ 5 <= 00000037
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000022
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000022
+@000030a8: $ 5 <= 00000015
+@0000307c: $ 2 <= 00000015
+@00003080: $ 5 <= 00000022
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000015
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000015
+@000030a8: $ 5 <= 0000000d
+@0000307c: $ 2 <= 0000000d
+@00003080: $ 5 <= 00000015
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 0000000d
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 0000000d
+@000030a8: $ 5 <= 00000008
+@0000307c: $ 2 <= 00000008
+@00003080: $ 5 <= 0000000d
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000008
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000008
+@000030a8: $ 5 <= 00000005
+@0000307c: $ 2 <= 00000005
+@00003080: $ 5 <= 00000008
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000005
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000005
+@000030a8: $ 5 <= 00000003
+@0000307c: $ 2 <= 00000003
+@00003080: $ 5 <= 00000005
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000003
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000003
+@000030a8: $ 5 <= 00000002
+@0000307c: $ 2 <= 00000002
+@00003080: $ 5 <= 00000003
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000002
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000001
+@000030a0: $ 4 <= 00000002
+@000030a8: $ 5 <= 00000001
+@0000307c: $ 2 <= 00000001
+@00003080: $ 5 <= 00000002
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000001
+@00003094: $ 0 <= 00000000
+@0000309c: $ 0 <= 00000002
+@000030a0: $ 4 <= 00000001
+@000030a8: $ 5 <= 00000000
+@0000307c: $ 2 <= 00000000
+@00003080: $ 5 <= 00000001
+@00003084: $ 1 <= 00000000
+@0000308c: $ 4 <= 00000000
+@00003094: $ 0 <= 00000000
+@000030ac: $ 2 <= 00000001
+@000030b0: $29 <= 00000fe0
+@000030b4: $30 <= 00000fe8
+@000030b8: $31 <= 000030e0
+@000030c0: $29 <= 00000fe8
+@000030e0: $ 3 <= 00000001
+@000030e4: $ 2 <= 00000001
+@000030e8: $ 4 <= 00000001
+         1
+@000030f0: $ 2 <= 0000000a
+$finish called at time : 4315 ns : File "E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v" Line 336
+# exit
+INFO: [Common 17-206] Exiting Vivado at Tue Jan  7 00:02:10 2025...

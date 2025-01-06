@@ -54,13 +54,13 @@ module controlunit(reset,clock,instruction,Op,Func,regdst,regwrite,alusrc,aluop,
     end
     assign pc_write=pc_writereg;
     assign syscall=(Op==6'b000000&Func==6'b001100)?1:0;//syscall
-    wire nop=(instruction==0)?1:0;
+    wire nop=(instruction==0)?1:0;//等同于sll0，按照sll的信号处理
     wire i_jr  = (Op == 6'b000000 & Func == 6'b001000)?1:0;
     wire i_jalr= (Op == 6'b000000 & Func == 6'b001001)?1:0;
     wire i_mu_div = (Op == 6'b000000 & (Func == 6'b011000|Func==6'b011001|Func==6'b011010|Func==6'b011011))?1:0;//为MULT/MULTU/DIV/DIVU
     wire i_mf= (Op == 6'b000000 & (Func == 6'b010000| Func == 6'b010010))?1:0;//为MFHI/MFLO
     wire i_mt= (Op == 6'b000000 & (Func == 6'b010001| Func == 6'b010011))?1:0;//为MTHI/MTLO
-    wire r_format=(Op==6'b000000&(!i_mu_div)&(!i_mf)&(!i_mt)&(!i_jr)&(!i_jalr))?1:0;//r型指令
+    wire r_format=(Op==6'b000000&(!i_mu_div)&(!i_mf)&(!i_mt)&(!i_jr)&(!i_jalr)&(!syscall))?1:0;//r型指令
     wire i_lui  = (Op == 6'b001111)?1:0;
     wire i_jal  = (Op == 6'b000011)?1:0;
     wire i_l=(Op==6'b100011|Op==6'b100000|Op==6'b100100|Op==6'b100001|Op==6'b100101);//lw/lb/lbu/lh/lhu
@@ -69,19 +69,19 @@ module controlunit(reset,clock,instruction,Op,Func,regdst,regwrite,alusrc,aluop,
     wire i_branch=(Op==6'b000100|Op==6'b000101|Op==6'b000001|Op==6'b000110|Op==6'b000111)?1:0;//beq/bne/beqz/bgez/blez/bgtz
     wire i_shift=(Op==6'b000000&(Func==6'b000000|Func==6'b000010|Func==6'b000011))?1:0;//sll/srl/sra
 
-    assign regdst=(r_format|i_mf|i_shift|i_jalr)&(!nop);
-    assign alusrc=(i_l|i_s|i_alui)&(!nop);
-    assign memtoreg=i_l&(!nop);
-    assign regwrite=(r_format|i_l|i_lui|i_jal|i_alui|i_jalr|i_mf|i_shift)&(!nop);
-    assign memread=i_l&(!nop);
-    assign memwrite=i_s&(!nop);
-    assign branch=i_branch&(!nop);
-    assign aluop[0]=(i_alui|i_branch)&(!nop);
-    assign aluop[1]=(i_shift|i_alui|r_format)&(!nop);
-    assign lui=i_lui&(!nop);
-    assign jal=(i_jal|i_jalr)&(!nop);
-    assign jr=(i_jr|i_jalr)&(!nop);
-    assign jump=(Op==6'b000010&(!nop))?1:0;
-    assign alusrca=i_shift&(!nop);
-    assign mutstart=(i_mu_div|i_mt|i_mf)&(!nop);
+    assign regdst=(r_format|i_mf|i_shift|i_jalr);
+    assign alusrc=(i_l|i_s|i_alui);
+    assign memtoreg=i_l;
+    assign regwrite=(r_format|i_l|i_lui|i_jal|i_alui|i_jalr|i_mf|i_shift);
+    assign memread=i_l;
+    assign memwrite=i_s;
+    assign branch=i_branch;
+    assign aluop[0]=(i_alui|i_branch);
+    assign aluop[1]=(i_shift|i_alui|r_format);
+    assign lui=i_lui;
+    assign jal=(i_jal|i_jalr);
+    assign jr=(i_jr|i_jalr);
+    assign jump=(Op==6'b000010)?1:0;
+    assign alusrca=i_shift;
+    assign mutstart=(i_mu_div|i_mt|i_mf);
 endmodule

@@ -33,12 +33,14 @@ module GR(clock,reset,rd1,rd2,wd1,iswriteable,writedata,readresult1,readresult2,
     output wire[31:0]readresult1;
     output wire[31:0]readresult2;
     reg[31:0]data[31:0];//32????จน????
+    reg[31:0]PC;
     assign readresult1=data[rd1[4:0]];
     assign readresult2=data[rd2[4:0]];
     reg[31:0] i=0;
     always @(posedge clock)begin
     end
     always @(negedge clock)begin
+        PC=pc;
         if(reset)begin
             for(i=0;i<32;i=i+1)begin
                 data[i]=0;
@@ -50,8 +52,9 @@ module GR(clock,reset,rd1,rd2,wd1,iswriteable,writedata,readresult1,readresult2,
                   default: data[wd1]=writedata;
             endcase
             //data[wd1]=(writedata);
-            
+            if($signed(PC)>=0)begin
             $display("@%h: $%d <= %h", pc, wd1, writedata);
+            end
         end
     end
     

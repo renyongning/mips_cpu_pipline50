@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Tue Jan  7 00:34:01 2025
-# Process ID: 22324
+# Start of session at: Tue Jan  7 00:33:36 2025
+# Process ID: 12876
 # Current directory: E:/learn/cpuhomework/Pipeline50/pipline50
 # Command line: vivado.exe -mode batch -source run.tcl
 # Log file: E:/learn/cpuhomework/Pipeline50/pipline50/vivado.log
@@ -51,8 +51,8 @@ source mips_tb.tcl
 WARNING: Too many words specified in data file E:/learn/cpuhomework/finallab/Pipeline50/pipeline-tester-py/code.txt
 INFO: [USF-XSim-96] XSim completed. Design snapshot 'mips_tb_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 1000ns
-launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 340.527 ; gain = 19.164
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 339.090 ; gain = 17.770
 # run all
 Stopped at time : 5 ns : File "E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sim_1/new/mips_tb.v" Line 22
 # exit
-INFO: [Common 17-206] Exiting Vivado at Tue Jan  7 00:34:11 2025...
+INFO: [Common 17-206] Exiting Vivado at Tue Jan  7 00:33:46 2025...

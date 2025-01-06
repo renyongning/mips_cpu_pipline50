@@ -57,21 +57,22 @@ module DM(reset,clock,dmop,address,writeEnabled,writeInput,readResult,pc);//´¦Àí
                         2'b11:data[address[31:2]][31:24]=writeInput[7:0];
                         default: data[address[31:2]]=32'b0;
                     endcase
+                    $display("@%h: *%h <= %h", pc, {address[31:2],2'b00},data[address[31:2]]);
                 end//SB
                 else if(dmop==3'b110)begin
                     case (address[1:0])
                         2'b00:data[address[31:2]][15:0]=writeInput[15:0];
                         2'b10:data[address[31:2]][31:16]=writeInput[15:0];
                         default: data[address[31:2]]=32'b0;
-            
                     endcase
+                    $display("@%h: *%h <= %h", pc,{address[31:2],2'b00},data[address[31:2]]);
                end//SH
                else if(dmop==3'b111)begin
                     data[address[31:2]]=writeInput;
+                    $display("@%h: *%h <= %h", pc, address,writeInput);
                end//SW
                else begin
                end
-            $display("@%h: *%h <= %h", pc, address,writeInput);
             end
             else begin
                 //readResult<=data[address[31:2]];

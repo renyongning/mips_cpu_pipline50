@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 //R型指令：ADD/ADDU/SUB/SUBU/AND/OR/XOR/NOR/SLT/SLTU +SLL/SRL/SRA+SLLV/SRLV/SRAV aluop为10OP就是Func
-//带有立即数的ALU指令ADDI / ADDIU / ANDI / ORI / XORI / SLTI aluop确定为11，通过INSOP确定OP
+//带有立即数的ALU指令ADDI / ADDIU / ANDI / ORI / XORI / SLTI/sltiu aluop确定为11，通过INSOP确定OP
 //条件跳转指令beq/bne/beqz/ aluop确定为01,通过INSOP确定OP(这个指令是传入pcalu的)
 //l/s指令确定aluop为00，操作符为100000
 module alucontrol(INS_OP,rt,Func,aluop,OP);//利用instruction的op和func部分以及aluop确定最终传入ALU的操作
@@ -49,7 +49,8 @@ module alucontrol(INS_OP,rt,Func,aluop,OP);//利用instruction的op和func部分以及al
     wire ori=(INS_OP==6'b001101)?1:0;
     wire xori=(INS_OP==6'b001110)?1:0;
     wire slti=(INS_OP==6'b001010)?1:0;
+    wire sltiu=(INS_OP==6'b001011)?1:0;
     wire[5:0] aluiop;
-    assign aluiop=(add_i==1)?6'b100000:(addiu==1)?6'b100001:(andi==1)?6'b100100:(ori==1)?6'b100101:(xori==1)?6'b100110:(slti==1)?6'b101010:6'b111111;
+    assign aluiop=(add_i==1)?6'b100000:(addiu==1)?6'b100001:(andi==1)?6'b100100:(ori==1)?6'b100101:(xori==1)?6'b100110:(slti==1)?6'b101010:(sltiu==1)?6'b101011:6'b111111;
     assign OP=(i_R==1)?Func:(i_lsj==1)?6'b100000:(i_branch==1)?pcaluop:aluiop;
 endmodule

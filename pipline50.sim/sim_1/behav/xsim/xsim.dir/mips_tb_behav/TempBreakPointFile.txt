@@ -1,3 +1,1 @@
 Breakpoint File Version 1.0
-23 true E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sim_1/new/mips_tb.v
-22 true E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sim_1/new/mips_tb.v

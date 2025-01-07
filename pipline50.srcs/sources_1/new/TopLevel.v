@@ -303,12 +303,16 @@ module Equel_unit(a,b,op,out,add);
     output wire[31:0] add;
     assign add=a+b;
     assign equel=a==b;
+    wire i_bgez=$signed(a)>=0;
+    wire i_blez=$signed(a)<=0;
+    wire i_bgtz=$signed(a)>0;
+    wire i_bltz=$signed(a)<0;
     assign out=(op==6'b000100)?equel://beq
     (op==6'b000101)?~equel://bne
-    (op==6'b000001)?($signed(a)>=0)://bgez
-    (op==6'b000110)?($signed(a)<=0)://blez
-    (op==6'b000111)?($signed(a)>0)://bgtz
-    (op==6'b000001)?($signed(a)<0)://bltz
+    (op==6'b000001)?i_bgez://bgez
+    (op==6'b000110)?i_blez://blez
+    (op==6'b000111)?i_bgtz://bgtz
+    (op==6'b000001)?i_bltz://bltz
     1'b0;//default
 endmodule//输入a,b两个数据，根据op判断是否满足beq,bne,beqz的条件，同时输出其和
 module syscall_unit(vo,ao,syscall,sysblock,clock,reset);

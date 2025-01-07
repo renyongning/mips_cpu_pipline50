@@ -32,12 +32,26 @@ module DM(reset,clock,dmop,address,writeEnabled,writeInput,readResult,pc);//处理
     reg[31:0] i;
     output wire[31:0] readResult;
     wire[31:0] tem_result;
-
+    wire[31:0] i_lb1,i_lb2,i_lb3,i_lb4;
+    wire[31:0] i_lh1,i_lh2;
     assign tem_result=data[address[31:2]];//获取对其的word的内容
+    assign i_lb1[7:0]=tem_result[7:0];
+    assign i_lb2[7:0]=tem_result[15:8];
+    assign i_lb3[7:0]=tem_result[23:16];
+    assign i_lb4[7:0]=tem_result[31:24];
+    assign i_lb1[31:8]=(tem_result[7]==1)?24'hFFFFFF:24'h000000;
+    assign i_lb2[31:8]=(tem_result[15]==1)?24'hFFFFFF:24'h000000;
+    assign i_lb3[31:8]=(tem_result[23]==1)?24'hFFFFFF:24'h000000;
+    assign i_lb4[31:8]=(tem_result[31]==1)?24'hFFFFFF:24'h000000;
+
+    assign i_lh1[15:0]=tem_result[15:0];
+    assign i_lh2[15:0]=tem_result[31:16];
+    assign i_lh1[31:16]=(tem_result[15]==1)?16'hFFFF:16'h0000;
+    assign i_lh2[31:16]=(tem_result[31]==1)?16'hFFFF:16'h0000;
     assign readResult=(dmop==3'b000)?tem_result://lw//根据op获取输出
-    (dmop==3'b001)?((address[1:0]==2'b00)?$signed(tem_result[15:0]):(address[1:0]==2'b10)?$signed(tem_result[31:16]):32'b0)://lh address[1:0]要么是00，要么是10
+    (dmop==3'b001)?((address[1:0]==2'b00)?i_lh1:(address[1:0]==2'b10)?i_lh2:32'b0)://lh address[1:0]要么是00，要么是10
     (dmop==3'b010)?((address[1:0]==2'b00)?tem_result[15:0]:(address[1:0]==2'b10)?tem_result[31:16]:32'b0)://lhu
-    (dmop==3'b011)?((address[1:0]==2'b00)?$signed(tem_result[7:0]):(address[1:0]==2'b01)?$signed(tem_result[15:8]):(address[1:0]==2'b10)?$signed(tem_result[23:16]):(address[1:0]==2'b11)?$signed(tem_result[31:24]):32'b0)://lb
+    (dmop==3'b011)?((address[1:0]==2'b00)?i_lb1:(address[1:0]==2'b01)?i_lb2:(address[1:0]==2'b10)?i_lb3:(address[1:0]==2'b11)?i_lb4:32'b0)://lb
     (dmop==3'b100)?((address[1:0]==2'b00)?tem_result[7:0]:(address[1:0]==2'b01)?tem_result[15:8]:(address[1:0]==2'b10)?tem_result[23:16]:(address[1:0]==2'b11)?tem_result[31:24]:32'b0)://lbu
     32'b0;
 

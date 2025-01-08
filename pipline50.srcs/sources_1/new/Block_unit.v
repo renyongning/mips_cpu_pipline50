@@ -28,16 +28,11 @@ ex中需要会写相同的寄存器且需要memread,阻塞(一个周期)
 ex阶段的指令不需memread且写回的寄存器相同：阻塞(一个周期)
 ex阶段的指令需要memread且写回的寄存器相同，阻塞(两个周期)
 mem阶段的指令需要memread且写回的寄存器相同，阻塞(一个周期)
-由于要阻塞两个周期，我们需要对ex/mem也进行清空的设置，
 以上都是在id阶段发生的阻塞
 3.ex阶段乘法busy信号会导致在ex阶段的阻塞
-ex阶段为mut类指令且busy被设置（busy&mutstart==0(操作为乘除类操作)），清空ex/mem,冻结id/ex,id/if,pc
+ex阶段为mut类指令且busy被设置（busy&mutstart==1(操作为乘除类操作)），清空ex/mem,冻结id/ex,id/if,pc
 如果阻塞操作发生了冲突（在一个周期id和ex阶段都检测到了阻塞）
 优先处理ex阶段的阻塞（id/ex冻结而非清空)
-4.syscall的阻塞，(当指令为syscall并且后面exe,mem,阶段存在写回v0/a0则阻塞逻辑与j类型一样)
-为了保证在syscall时寄存器全部写入，应该取消旁路，阻塞到相应的寄存器回写完成再执行
-阻塞阶段：id
-条件：ex,和mem阶段存在需要回写ao,vo寄存器的指令(不需要限制回写数据是memwread还是alu获得的）
 
 */
 module Block_unit(Op,Func,rs,rt,ex_Op,ex_Func,ex_memread,ex_wb,ex_regwrite,ex_mutstart,ex_busy,mem_memread,mem_wb,mem_regwrite,stoppc,stopif_id,reset_idex,reset_exmem,stop_idex,block_gr);//OP,FUNC确定指令类型,rs,rt为需要的寄存器地址,剩余的为ex,mem阶段需要的条件

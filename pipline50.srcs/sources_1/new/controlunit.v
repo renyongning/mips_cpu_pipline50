@@ -66,7 +66,7 @@ module controlunit(reset,clock,instruction,Op,Func,regdst,regwrite,alusrc,aluop,
     wire i_l=(Op==6'b100011|Op==6'b100000|Op==6'b100100|Op==6'b100001|Op==6'b100101);//lw/lb/lbu/lh/lhu
     wire i_s=(Op==6'b101011|Op==6'b101000|Op==6'b101001);//sw/sb/sh
     wire i_alui=(Op==6'b001000|Op==6'b001001|Op==6'b001100|Op==6'b001101|Op==6'b001110|Op==6'b001010|Op==6'b001011);//带有立即数的ALU指令ADDI / ADDIU / ANDI / ORI / XORI / SLTI / SLTIU
-    wire i_branch=(Op==6'b000100|Op==6'b000101|Op==6'b000001|Op==6'b000110|Op==6'b000111)?1:0;//beq/bne/beqz/bgez/blez/bgtz
+    wire i_branch=(Op==6'b000100|Op==6'b000101|Op==6'b000001|Op==6'b000110|Op==6'b000111)?1:0;//beq/bne/bgez(bltz)/blez/bgtz
     wire i_shift=(Op==6'b000000&(Func==6'b000000|Func==6'b000010|Func==6'b000011))?1:0;//sll/srl/sra
 
     assign regdst=(r_format|i_mf|i_shift|i_jalr);

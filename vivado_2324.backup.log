@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Tue Jan  7 21:09:25 2025
-# Process ID: 9808
+# Start of session at: Wed Jan  8 17:46:22 2025
+# Process ID: 2324
 # Current directory: E:/learn/cpuhomework/Pipeline50/pipline50
 # Command line: vivado.exe -mode batch -source run.tcl
 # Log file: E:/learn/cpuhomework/Pipeline50/pipline50/vivado.log
@@ -35,18 +35,66 @@ WARNING: [VRFC 10-3091] actual bit length 5 differs from formal bit length 32 fo
 WARNING: [VRFC 10-3091] actual bit length 6 differs from formal bit length 5 for port 'rd1' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:121]
 WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'reset' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:151]
 WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'reset' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:158]
+WARNING: [VRFC 10-3091] actual bit length 5 differs from formal bit length 6 for port 'rt' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:200]
 WARNING: [VRFC 10-3091] actual bit length 5 differs from formal bit length 32 for port 'in1' [E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/TopLevel.v:120]
 Completed static elaboration
 INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
-D:/download/Vivado/Vivado/2018.3/tps/mingw/6.2.0/win64.o/nt/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot open output file xsim.dir/mips_tb_behav/xsimk.exe: Permission denied
-collect2.exe: error: ld returned 1 exit status
-INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
-ERROR: [USF-XSim-62] 'elaborate' step failed with error(s) while executing 'E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.sim/sim_1/behav/xsim/elaborate.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
-ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
-launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 334.504 ; gain = 12.055
-ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
-
-    while executing
-"launch_simulation -simset sim_1"
-    (file "run.tcl" line 2)
-INFO: [Common 17-206] Exiting Vivado at Tue Jan  7 21:09:34 2025...
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "mips_tb_behav -key {Behavioral:sim_1:Functional:mips_tb} -tclbatch {mips_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source mips_tb.tcl
+## current_wave_config
+WARNING: Too many words specified in data file E:/learn/cpuhomework/finallab/Pipeline50/pipeline-tester-py/code.txt
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'mips_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 339.684 ; gain = 18.574
+# run all
+@00003000: $31 <= 00003000
+@00003004: $ 0 <= f80a0000
+@00003008: $ 0 <= 00005bfe
+@0000300c: $ 1 <= a7d80000
+@00003010: $ 1 <= a7d8b9b9
+@00003014: $ 2 <= 3d010000
+@00003018: $ 2 <= 3d0173b9
+@0000301c: $ 3 <= 17220000
+@00003020: $ 3 <= 1722ecfe
+@00003024: $ 4 <= 89090000
+@00003028: $ 4 <= 89093764
+@0000302c: $ 5 <= 759a0000
+@00003030: $ 5 <= 759abbcb
+@00003034: $ 6 <= 9d210000
+@00003038: $ 6 <= 9d2117e3
+@0000303c: $ 7 <= 03530000
+@00003040: $ 7 <= 0353e10f
+@00003044: $ 8 <= 15bb0000
+@00003048: $ 8 <= 15bb4992
+@0000304c: $ 9 <= 52d50000
+@00003050: $ 9 <= 52d58376
+@00003054: $10 <= a0700000
+@00003058: $10 <= a0701615
+@0000305c: $11 <= 8a920000
+@00003060: $11 <= 8a929ecf
+@00003064: $12 <= 62130000
+@00003068: $12 <= 62131d0c
+@0000306c: $13 <= fbf70000
+@00003070: $13 <= fbf7f315
+@00003074: $14 <= 6fba0000
+@00003078: $14 <= 6fba7740
+@0000307c: $15 <= 3a660000
+@00003080: $15 <= 3a66f059
+@00003084: $16 <= 2fbb0000
+@00003088: $16 <= 2fbb781e
+@0000308c: $17 <= 9b780000
+@00003090: $17 <= 9b788711
+@00003094: $18 <= 0f190000
+@00003098: $18 <= 0f19e2db
+@0000309c: $19 <= fc830000
+@000030a0: $19 <= fc839499
+Stopped at time : 445 ns : File "E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/DM.v" Line 86
+# exit
+INFO: [Common 17-206] Exiting Vivado at Wed Jan  8 17:46:32 2025...

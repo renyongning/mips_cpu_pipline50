@@ -122,7 +122,7 @@ module TopLevel(clock,reset,pcout,k);
     signextended extendmod(.instruction(one_IR_out),.imm16(imm16),.out(signextendout));//扩展位数模块
     alucontrol i_alucontrol(.INS_OP(ins2cu_op),.rt(rt),.Func(ins2cu_func),.aluop(aluop),.OP(aluoperation));//alu控制器
     dmcontrol i_dmcontrol(.Op(ins2cu_op),.dmop(dmop));//dm操作控制器
-    mutcontrol i_mutcontrol(.Func(ins2cu_func),.mutop(mutop));//乘除法操作控制器
+    mutcontrol i_mutcontrol(.Op(ins2cu_op),.Func(ins2cu_func),.mutop(mutop));//乘除法操作控制器
     shiftleft16_16 shiftleft1(.in(imm16),.out(shiftout3));//左移16位模块
     controlunit i_control(.reset(reset),.clock(clock),.instruction(one_IR_out),.Op(ins2cu_op),.Func(ins2cu_func),.regdst(regdst),.regwrite(regwrite),.alusrc(alusrc),.aluop(aluop),.memread(memread),.memwrite(memwrite),.memtoreg(memtoreg),.lui(lui),.jal(jal),.branch(branch),.jr(jr),.jump(jump),.pc_write(pc_write),.alusrca(alusrca),.mutstart(mutstart),.syscall(syscall));//控制单元
     ID_EX i_id_ex(.regwrite(regwrite),.alusrc(alusrc),.memread(memread),.memwrite(memwrite),.memtoreg(memtoreg),.lui(lui),.jal(jal),.branch(branch),.jr(jr),.jump(jump),.alusrca(alusrca),.mutstart(mutstart),//输入信号
@@ -197,7 +197,7 @@ module TopLevel(clock,reset,pcout,k);
     
     wire[31:0] jr_result;
     wire equel;
-    Equel_unit i_equel_unit(.a(PCA),.b(PCB),.op(ins2cu_op),.out(equel),.add(jr_result));//beg jr模块
+    Equel_unit i_equel_unit(.a(PCA),.b(PCB),.op(ins2cu_op),.rt(rt),.out(equel),.add(jr_result));//beg jr模块
 
     mux2_2 muxpc_1(.in1(addout),.in2(naddout),.sign1(branch&(!iscleenslot)),.sign2(equel),.out(mux1out));//pc第一个mux，在pc+4与上个指令的beq结果中选择
     mux2_2_2 muxpc_2(.in1(shiftout),.in2(mux1out),.sign1(jal&(!iscleenslot)),.sign2(jump&(!iscleenslot)),.out(mux2out));//pc第二个mux,在mux1输出与上一个指令的j结果中选择,
@@ -294,10 +294,11 @@ module nadd(in1,in2,out);
     assign res=in1+in2;
     assign out[31:0]=res[31:0];
 endmodule
-module Equel_unit(a,b,op,out,add);
+module Equel_unit(a,b,op,rt,out,add);
     input wire[31:0] a;
     input wire[31:0] b;
     input wire[5:0] op;
+    input wire[5:0] rt;
     output wire out;
     wire equel;
     output wire[31:0] add;
@@ -309,10 +310,10 @@ module Equel_unit(a,b,op,out,add);
     wire i_bltz=$signed(a)<0;
     assign out=(op==6'b000100)?equel://beq
     (op==6'b000101)?~equel://bne
-    (op==6'b000001)?i_bgez://bgez
+    (op==6'b000001&rt==6'b000001)?i_bgez://bgez
     (op==6'b000110)?i_blez://blez
     (op==6'b000111)?i_bgtz://bgtz
-    (op==6'b000001)?i_bltz://bltz
+    (op==6'b000001&rt==6'b000000)?i_bltz://bltz
     1'b0;//default
 endmodule//输入a,b两个数据，根据op判断是否满足beq,bne,beqz的条件，同时输出其和
 module syscall_unit(vo,ao,syscall,sysblock,clock,reset);

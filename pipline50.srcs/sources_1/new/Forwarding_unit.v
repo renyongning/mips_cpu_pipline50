@@ -35,9 +35,9 @@ module Forwarding_unit(id_rs,id_rt,ex_rs,ex_rt,ex_regwrite,wb_regwrite,ex_rd,wb_
     output wire[1:0]forwardA,forwardB,forwardPCA,forwardPCB;//输出：控制ex阶段alu输入，控制id阶
     output wire[1:0]forwardsysA,forwardsysB;//用于syscall通路的forward
     wire a_choose_wb;
-    assign a_choose_wb=wb_regwrite&(!(ex_regwrite&(ex_rd!=5'b0)&(ex_rd==ex_rs)))&(wb_rd==ex_rs);//A选择wb
+    assign a_choose_wb=wb_regwrite&(wb_rd!=5'b0)&(!(ex_regwrite&(ex_rd!=5'b0)&(ex_rd==ex_rs)))&(wb_rd==ex_rs);//A选择wb
     wire b_choose_wb;
-    assign b_choose_wb=wb_regwrite&(!(ex_regwrite&(ex_rd!=5'b0)&(ex_rd==ex_rt)))&(wb_rd==ex_rt);//B选择wb
+    assign b_choose_wb=wb_regwrite&(wb_rd!=5'b0)&(!(ex_regwrite&(ex_rd!=5'b0)&(ex_rd==ex_rt)))&(wb_rd==ex_rt);//B选择wb
     wire a_choose_ex;
     wire b_choose_ex;
     assign a_choose_ex=ex_regwrite&(ex_rd!=5'b0)&(ex_rd==ex_rs);//A选择ex
@@ -46,14 +46,16 @@ module Forwarding_unit(id_rs,id_rt,ex_rs,ex_rt,ex_regwrite,wb_regwrite,ex_rd,wb_
     assign forwardB[1]=b_choose_ex;//B选择
     assign forwardA[0]=a_choose_wb;
     assign forwardB[0]=b_choose_wb;
+    
     wire pca_choose_wb;
     wire pcb_choose_wb;
-    assign pca_choose_wb=wb_regwrite&(ex_rd!=5'b0)&(!(ex_regwrite&(ex_rd!=5'b0)&(ex_rd==id_rs)))&(wb_rd==id_rs);
-    assign pcb_choose_wb=wb_regwrite&(ex_rd!=5'b0)&(!(ex_regwrite&(ex_rd!=5'b0)&(ex_rd==id_rt)))&(wb_rd==id_rt);
+    assign pca_choose_wb=wb_regwrite&(wb_rd!=5'b0)&(ex_rd!=5'b0)&(!(ex_regwrite&(ex_rd!=5'b0)&(ex_rd==id_rs)))&(wb_rd==id_rs);
+    assign pcb_choose_wb=wb_regwrite&(wb_rd!=5'b0)&(ex_rd!=5'b0)&(!(ex_regwrite&(ex_rd!=5'b0)&(ex_rd==id_rt)))&(wb_rd==id_rt);
     wire pca_choose_ex;
     wire pcb_choose_ex;
     assign pca_choose_ex=ex_regwrite&(ex_rd!=5'b0)&(ex_rd==id_rs);
     assign pcb_choose_ex=ex_regwrite&(ex_rd!=5'b0)&(ex_rd==id_rt);
+    
     wire sysa_choose_wb;
     wire sysb_choose_wb;
     assign sysa_choose_wb=wb_regwrite&(ex_rd!=5'b0)&(!(ex_regwrite&(ex_rd!=5'b0)&(ex_rd==5'b000010)))&(wb_rd==5'b000010);

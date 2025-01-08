@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Wed Jan  8 17:46:48 2025
-# Process ID: 14624
+# Start of session at: Wed Jan  8 17:45:57 2025
+# Process ID: 11160
 # Current directory: E:/learn/cpuhomework/Pipeline50/pipline50
 # Command line: vivado.exe -mode batch -source run.tcl
 # Log file: E:/learn/cpuhomework/Pipeline50/pipline50/vivado.log
@@ -52,49 +52,49 @@ source mips_tb.tcl
 WARNING: Too many words specified in data file E:/learn/cpuhomework/finallab/Pipeline50/pipeline-tester-py/code.txt
 INFO: [USF-XSim-96] XSim completed. Design snapshot 'mips_tb_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 1000ns
-launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 339.801 ; gain = 18.023
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 339.848 ; gain = 17.656
 # run all
 @00003000: $31 <= 00003000
-@00003004: $ 0 <= a18f0000
-@00003008: $ 0 <= 0000c9ac
-@0000300c: $ 1 <= 607b0000
-@00003010: $ 1 <= 607bb348
-@00003014: $ 2 <= 7a3e0000
-@00003018: $ 2 <= 7a3ea6d0
-@0000301c: $ 3 <= 3bc90000
-@00003020: $ 3 <= 3bc9c89a
-@00003024: $ 4 <= 11df0000
-@00003028: $ 4 <= 11df6f65
-@0000302c: $ 5 <= e1310000
-@00003030: $ 5 <= e131bc59
-@00003034: $ 6 <= 59e30000
-@00003038: $ 6 <= 59e3970f
-@0000303c: $ 7 <= 98820000
-@00003040: $ 7 <= 9882132e
-@00003044: $ 8 <= f1180000
-@00003048: $ 8 <= f11837e8
-@0000304c: $ 9 <= 89090000
-@00003050: $ 9 <= 890935f6
-@00003054: $10 <= 8c5b0000
-@00003058: $10 <= 8c5b248d
-@0000305c: $11 <= 937f0000
-@00003060: $11 <= 937ff5b3
-@00003064: $12 <= aef00000
-@00003068: $12 <= aef08872
-@0000306c: $13 <= ccfc0000
-@00003070: $13 <= ccfc1561
-@00003074: $14 <= 257a0000
-@00003078: $14 <= 257a1b87
-@0000307c: $15 <= 9cde0000
-@00003080: $15 <= 9cde63be
-@00003084: $16 <= 522b0000
-@00003088: $16 <= 522b729a
-@0000308c: $17 <= dad00000
-@00003090: $17 <= dad0bac9
-@00003094: $18 <= 62170000
-@00003098: $18 <= 6217fc0e
-@0000309c: $19 <= 14da0000
-@000030a0: $19 <= 14da60c6
+@00003004: $ 0 <= fdc00000
+@00003008: $ 0 <= 0000fd2f
+@0000300c: $ 1 <= 02600000
+@00003010: $ 1 <= 02605e3a
+@00003014: $ 2 <= 15a70000
+@00003018: $ 2 <= 15a74f9d
+@0000301c: $ 3 <= 176c0000
+@00003020: $ 3 <= 176c30fa
+@00003024: $ 4 <= d9810000
+@00003028: $ 4 <= d9812320
+@0000302c: $ 5 <= 603b0000
+@00003030: $ 5 <= 603b751d
+@00003034: $ 6 <= 22d20000
+@00003038: $ 6 <= 22d26dcb
+@0000303c: $ 7 <= 2b5f0000
+@00003040: $ 7 <= 2b5f69d7
+@00003044: $ 8 <= cac20000
+@00003048: $ 8 <= cac259aa
+@0000304c: $ 9 <= c0090000
+@00003050: $ 9 <= c0091e28
+@00003054: $10 <= b04b0000
+@00003058: $10 <= b04b4cd3
+@0000305c: $11 <= de830000
+@00003060: $11 <= de837188
+@00003064: $12 <= 9fee0000
+@00003068: $12 <= 9feea442
+@0000306c: $13 <= e3af0000
+@00003070: $13 <= e3af26e6
+@00003074: $14 <= a9a80000
+@00003078: $14 <= a9a819d3
+@0000307c: $15 <= 968e0000
+@00003080: $15 <= 968e8205
+@00003084: $16 <= 7d360000
+@00003088: $16 <= 7d361b0d
+@0000308c: $17 <= 872a0000
+@00003090: $17 <= 872af5ad
+@00003094: $18 <= a7a00000
+@00003098: $18 <= a7a01161
+@0000309c: $19 <= c0ee0000
+@000030a0: $19 <= c0eefc90
 Stopped at time : 445 ns : File "E:/learn/cpuhomework/Pipeline50/pipline50/pipline50.srcs/sources_1/new/DM.v" Line 86
 # exit
-INFO: [Common 17-206] Exiting Vivado at Wed Jan  8 17:46:58 2025...
+INFO: [Common 17-206] Exiting Vivado at Wed Jan  8 17:46:07 2025...

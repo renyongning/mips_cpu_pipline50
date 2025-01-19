@@ -1,0 +1,1 @@
+支持50条mips指令的CPU，通过verilog+vivado实现，详细见实验文档

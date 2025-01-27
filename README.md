@@ -1,1 +1,2 @@
 支持50条mips指令的CPU，通过verilog+vivado实现，详细见实验文档
+源码中MultiplicationDivisionUnit.sv的路径需要配置为本地路径
